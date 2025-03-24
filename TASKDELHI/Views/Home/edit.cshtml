@@ -1,0 +1,299 @@
+﻿
+@{
+    ViewBag.Title = "edit";
+}
+
+@*<form method="post" enctype="multipart/form-data">
+    <input type="text" class="form-control" readonly value="@ViewBag.data1.Rows[0]["id"]" name="id" />
+    User Name:
+    <input type="text" class="form-control" value="@ViewBag.data1.Rows[0]["fname"]" name="fname" />
+    Lastname
+    <input type="text" class="form-control" value="@ViewBag.data1.Rows[0]["lname"]" name="lname" />
+    Phoneno:
+    <input type="text" class="form-control" value="@ViewBag.data1.Rows[0]["phoneno"]" name="phoneno" />
+    Age:
+    <input type="text" class="form-control" value="@ViewBag.data1.Rows[0]["age"]" name="age" />
+    User Email:
+    <input type="text" class="form-control" value="@ViewBag.data1.Rows[0]["email"]" name="email" />
+    Password:
+    <input type="password" class="form-control" value="@ViewBag.data1.Rows[0]["password"]" name="password" />
+    
+    @if (!string.IsNullOrEmpty(Convert.ToString(ViewBag.data1.Rows[0]["profile"])))
+    {
+        <div>
+            <label> Profile Image:</label><br />
+            <img src="~/Content/pic/@ViewBag.data1.Rows[0]["profile"]" alt="Profile Picture" height="100" width="100" /><br />
+        </div>
+    }
+    <div>
+        <label>Update Profile Image:</label>
+        <input type="file" class="form-control" name="profile" />
+    </div>
+    <input type="submit" value="sumbit" class="btn btn-danger form-control" />
+</form>*@
+
+
+
+
+<style>
+    @@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #f6f8fa;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+        max-width: 700px;
+        width: 100%;
+        background: #ffffff;
+        border-radius: 0.5rem;
+        box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1), 0px 5px 12px -2px rgba(0, 0, 0, 0.1), 0px 18px 36px -6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        margin: 10px;
+    }
+
+        .container .title {
+            padding: 25px;
+            background: #f6f8fa;
+        }
+
+            .container .title p {
+                font-size: 25px;
+                font-weight: 500;
+                position: relative;
+            }
+
+                .container .title p::before {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 30px;
+                    height: 3px;
+                    background: linear-gradient(to right, #F37A65, #D64141);
+                }
+
+    .user_details {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 25px;
+    }
+
+        .user_details .input_box {
+            width: calc(100% / 2 - 20px);
+            margin: 0 0 12px 0;
+        }
+
+    .input_box label {
+        font-weight: 500;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+        .input_box label::after {
+            content: " *";
+            color: red;
+        }
+
+    .input_box input {
+        width: 100%;
+        height: 45px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        font-size: 16px;
+        padding-left: 15px;
+        box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+        background-color: #f6f8fa;
+        font-family: 'Poppins', sans-serif;
+        transition: all 120ms ease-out 0s;
+    }
+
+
+        .input_box input:focus,
+        .input_box input:valid {
+            box-shadow: 0px 0px 0px 2px #AC8ECE;
+        }
+
+    form .gender {
+        padding: 0px 25px;
+    }
+
+    .gender .gender_title {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .gender .category {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        margin: 5px 0;
+    }
+
+        .gender .category label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+            .gender .category label .dot {
+                height: 18px;
+                width: 18px;
+                background: #d9d9d9;
+                border-radius: 50%;
+                margin-right: 10px;
+                border: 4px solid transparent;
+                transition: all 0.3s ease;
+            }
+
+    #radio_1:checked ~ .category label .one,
+    #radio_2:checked ~ .category label .two,
+    #radio_3:checked ~ .category label .three {
+        border-color: #d9d9d9;
+        background: #D64141;
+    }
+
+    .gender input {
+        display: none;
+    }
+
+    .reg_btn {
+        padding: 25px;
+        margin: 15px 0;
+    }
+
+        .reg_btn input {
+            height: 45px;
+            width: 100%;
+            border: none;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            background: linear-gradient(to right, #F37A65, #D64141);
+            border-radius: 5px;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+        }
+
+            .reg_btn input:hover {
+                background: linear-gradient(to right, #D64141, #F37A65);
+            }
+
+    @@media screen and (max-width: 584px) {
+
+        .user_details {
+            max-height: 340px;
+            overflow-y: scroll;
+        }
+
+            .user_details::-webkit-scrollbar {
+                width: 0;
+            }
+
+            .user_details .input_box {
+                width: 100%;
+            }
+
+        .gender .category {
+            width: 100%;
+        }
+    }
+
+
+    @@media screen and (max-width: 419px) {
+        .gender .category {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+
+</head>
+
+
+
+<div class="container">
+    <div class="title">
+        <p>Edit Record</p>
+    </div>
+    <form id="registrationForm" method="post" enctype="multipart/form-data">
+        <div class="user_details">
+            <div class="input_box">
+                <label for="id">Id</label>
+                <input type="number" id="id" name="id" readonly value="@ViewBag.data1.Rows[0]["id"]">
+            </div>
+            <div class="input_box">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="fname" value="@ViewBag.data1.Rows[0]["fname"]">
+            </div>
+            <div class="input_box">
+                <label for="username">Last Name</label>
+                <input type="text" id="username" name="lname" value="@ViewBag.data1.Rows[0]["lname"]">
+            </div>
+            <div class="input_box">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="@ViewBag.data1.Rows[0]["email"]">
+            </div>
+            <div class="input_box">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phoneno" value="@ViewBag.data1.Rows[0]["phoneno"]">
+            </div>
+            <div class="input_box">
+                <label for="pass">Password</label>
+                <input type="password" id="password" name="password" value="@ViewBag.data1.Rows[0]["password"]">
+            </div>
+            <div class="input_box">
+                <label for="confirmPass">Confirm Password</label>
+                <input type="password" id="confirmPass" name="confirmpassword" value="@ViewBag.data1.Rows[0]["confirmpassword"]">
+            </div>
+            <div class="input_box">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" value="@ViewBag.data1.Rows[0]["age"]">
+            </div>
+            <div class="input_box">
+                @if (!string.IsNullOrEmpty(Convert.ToString(ViewBag.data1.Rows[0]["profile"])))
+                {
+                    <div>
+                        <label> Profile Image:</label><br />
+                        <img src="~/Content/pic/@ViewBag.data1.Rows[0]["profile"]" alt="Profile Picture" height="100" width="100" /><br />
+                    </div>
+                }
+                <label for="profile">Profile</label>
+                <input type="file" id="profile" name="profile">
+
+            </div>
+            <div class="input_box">
+                <label for="address">Address</label>
+                <textarea  name="address"  id="address" class="input-field w-full border-2 border-gray-300 p-2 pl-10 rounded" rows="4" value="@ViewBag.data1.Rows[0]["address"]" ></textarea>
+
+            </div>
+        </div>
+
+        <div class="reg_btn">
+            <input type="submit" value="Register">
+        </div>
+    </form>
+</div>
